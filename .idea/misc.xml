@@ -3,19 +3,15 @@
     <component name="DesignSurface">
         <option name="filePathToZoomLevelMap">
             <map>
-                <entry key="app/src/main/res/drawable/ic_drawer.xml" value="0.308" />
-                <entry key="app/src/main/res/drawable/transparent_button_background.xml"
-                    value="0.308" />
+                <entry
+                    key="..\:/Self-Training/Coding/JupiterMovie/app/src/main/res/drawable/transparent_button_background.xml"
+                    value="0.1995" />
+                <entry
+                    key="..\:/Self-Training/Coding/JupiterMovie/app/src/main/res/layout/fragment_home.xml"
+                    value="0.33" />
                 <entry key="app/src/main/res/layout/activity_main.xml" value="0.31875" />
-                <entry key="app/src/main/res/layout/fragment_home.xml"
-                    value="0.25679347826086957" />
             </map>
         </option>
-    </component>
-    <component name="EntryPointsManager">
-        <list size="1">
-            <item class="java.lang.String" index="0" itemvalue="androidx.annotation.LayoutRes" />
-        </list>
     </component>
     <component name="ProjectRootManager" default="true" languageLevel="JDK_11" project-jdk-name="Android Studio default JDK"
         project-jdk-type="JavaSDK" version="2">

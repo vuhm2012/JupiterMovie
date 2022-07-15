@@ -13,15 +13,4 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-
-    <!-- Transparent toolbar -->
-    <style name="TransparentToolBar" parent="@style/Theme.JupiterMovie">
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="windowActionBarOverlay">true</item>
-        <item name="android:actionBarStyle">@style/Transparent</item>
-    </style>
-
-    <style name="Transparent" parent="Theme.JupiterMovie">
-        <item name="android:background">@android:color/transparent</item>
-    </style>
 </resources>
