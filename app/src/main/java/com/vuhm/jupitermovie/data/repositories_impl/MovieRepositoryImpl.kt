@@ -6,13 +6,10 @@ import com.vuhm.jupitermovie.domain.models.MovieResponse
 import com.vuhm.jupitermovie.domain.repositories.MovieRepository
 import javax.inject.Inject
 
-class MovieRepositoryImpl : MovieRepository {
-
-    @Inject
-    lateinit var movieApi: MovieAPI
-
-    @Inject
-    lateinit var movieResponseMapper: MovieResponseMapper
+class MovieRepositoryImpl @Inject constructor(
+    private val movieApi: MovieAPI,
+    private val movieResponseMapper: MovieResponseMapper
+) : MovieRepository {
 
     override suspend fun getTrending(): MovieResponse {
         return movieResponseMapper.mapFromEntity(movieApi.getTrending())

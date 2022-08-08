@@ -2,10 +2,10 @@ package com.vuhm.jupitermovie.data.mappers
 
 import com.vuhm.jupitermovie.data.models.MovieResponseEntity
 import com.vuhm.jupitermovie.domain.models.MovieResponse
+import javax.inject.Inject
 
-class MovieResponseMapper : EntityMapper<MovieResponseEntity, MovieResponse> {
-
-    lateinit var movieMapper: MovieMapper
+class MovieResponseMapper @Inject constructor(private val movieMapper: MovieMapper) :
+    EntityMapper<MovieResponseEntity, MovieResponse> {
 
     override fun mapFromEntity(entity: MovieResponseEntity): MovieResponse {
         return MovieResponse(

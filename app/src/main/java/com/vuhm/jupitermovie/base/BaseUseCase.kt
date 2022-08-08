@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 abstract class BaseUseCase<in Params, out Type> {
 
-    abstract operator fun invoke(params: Params) : Flow<Resource<out Type>>
+    abstract suspend operator fun invoke(params: Params): Flow<Resource<out Type>>
 
 }

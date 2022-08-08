@@ -13,7 +13,7 @@ import javax.inject.Inject
 class GetTrendingUseCase @Inject constructor(
     private val movieRepository: MovieRepository
 ) : BaseUseCase<Unit, MovieResponse>() {
-    override fun invoke(params: Unit): Flow<Resource<out MovieResponse>> = flow {
+    override suspend fun invoke(params: Unit): Flow<Resource<MovieResponse>> = flow {
         try {
             emit(Resource.Loading())
             val trending = movieRepository.getTrending()
