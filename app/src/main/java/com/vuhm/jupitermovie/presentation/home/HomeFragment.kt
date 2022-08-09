@@ -10,6 +10,7 @@ import com.vuhm.jupitermovie.R
 import com.vuhm.jupitermovie.base.BaseFragment
 import com.vuhm.jupitermovie.core.utils.Resource
 import com.vuhm.jupitermovie.databinding.FragmentHomeBinding
+import com.vuhm.jupitermovie.presentation.utils.createLoadingDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -20,23 +21,27 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val homeViewModel: HomeViewModel by viewModels()
 
     override fun initControls(savedInstanceState: Bundle?) {
+        val loadingDialog = activity?.createLoadingDialog()
         homeViewModel.getTrending()
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 homeViewModel.data.collectLatest { data ->
                     when (data) {
-                        is Resource.Success -> Toast.makeText(
-                            context,
-                            data.toString(),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        is Resource.Loading -> Toast.makeText(
-                            context,
-                            "Loading",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        is Resource.Error -> Toast.makeText(context, "Error", Toast.LENGTH_SHORT)
-                            .show()
+                        is Resource.Success -> {
+                            Toast.makeText(
+                                context,
+                                data.toString(),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            loadingDialog?.dismiss()
+                        }
+
+                        is Resource.Loading -> loadingDialog?.show()
+                        is Resource.Error -> {
+                            Toast.makeText(context, data.message, Toast.LENGTH_SHORT)
+                                .show()
+                            loadingDialog?.dismiss()
+                        }
                     }
                 }
             }
